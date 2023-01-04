@@ -37,7 +37,7 @@ Log into the AWS Console to create the Lambda function, give it the correct acce
 
 * Lambda > Functions > Create function
 * Name: monthlyBillingEmail
-* Runtime: Python 3.6
+* Runtime: Python 3.8
 * Role: Create a custom role
 
 * IAM Role: Create a new IAM Role
@@ -106,8 +106,8 @@ Lambda > Functions > monthlyBillingEmail
 
 We don't have any external libraries other than boto, so we can just edit inline
 
-Paste the contents of `generate_report.py` into the `lambda_function` tab 
-(except the shebang line although maybe that doesn't matter?)
+Paste the contents of `report.py` into the `lambda_function` tab 
+
 
 Create a test, using Hello World as a template
 (we're not actually using the contents so NBD)
@@ -122,6 +122,6 @@ In order to schedule the function to run automatically each month, we create a T
 * Configure triggers
 * Create a new rule
   * Rule name: lambda_monthly_billing
-  * Rule description: Running on the 3rd of the month
+  * Rule description: Running on the 4th of the month
   * Rule type: Schedule expression
   * Schedule expression: `cron(0 0 3 * ? *)`  <- Syntax on this is a little wonky... need to have `?` for Day-of-month or Day-of-week
